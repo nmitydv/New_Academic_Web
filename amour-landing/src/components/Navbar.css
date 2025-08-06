@@ -240,130 +240,126 @@
 .mobile-menu-btn svg {
   width: 32px;
   height: 32px;
+  transition: all 0.3s ease;
+  color: rgba(14, 19, 31, 1);
 }
 
 .mobile-menu-btn:hover {
   color: rgba(255, 172, 89, 1);
 }
 
-/* Mobile Menu Overlay */
+.mobile-menu-btn:hover svg {
+  color: rgba(255, 172, 89, 1);
+}
+
+/* Mobile Menu Overlay - Complete Rewrite */
 .mobile-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: flex-end;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Add blur to body when menu is open */
-body.menu-open {
-  overflow: hidden;
-}
-
-body.menu-open::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 40;
-  pointer-events: none;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99999 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: stretch !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
 }
 
 .mobile-menu-content {
-  background: #FFFFFF;
-  width: 80%;
-  max-width: 320px;
-  height: 100%;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  background-color: #FFFFFF !important;
+  width: 80% !important;
+  max-width: 320px !important;
+  height: 100vh !important;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2) !important;
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  z-index: 100000 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 .mobile-menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 32px;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: #FFFFFF;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-top: 8px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 32px !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background-color: #FFFFFF !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100001 !important;
 }
 
 .mobile-logo {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .mobile-logo-image {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 6px;
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
 }
 
 .mobile-close-btn {
-  background: rgba(255, 172, 89, 1);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 30;
-  min-width: 44px;
-  min-height: 44px;
+  background-color: rgba(255, 172, 89, 1) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  padding: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  z-index: 100002 !important;
 }
 
 .mobile-close-btn:hover {
-  background: rgba(255, 152, 69, 1);
-  transform: scale(1.1);
+  background-color: rgba(255, 152, 69, 1) !important;
+  transform: scale(1.1) !important;
 }
 
 .mobile-close-btn svg {
-  width: 24px;
-  height: 24px;
-  stroke-width: 2;
+  width: 24px !important;
+  height: 24px !important;
+  stroke-width: 2 !important;
 }
 
 .mobile-nav-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
-  flex: 1;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  margin-bottom: 32px !important;
+  flex: 1 !important;
+  background-color: #FFFFFF !important;
 }
 
 .mobile-nav-link {
-  display: block;
-  text-decoration: none;
-  color: rgba(14, 19, 31, 1);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  cursor: pointer;
-  padding: 12px 0;
+  display: block !important;
+  text-decoration: none !important;
+  color: rgba(14, 19, 31, 1) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  transition: color 0.3s ease !important;
+  cursor: pointer !important;
+  padding: 12px 0 !important;
+  background-color: transparent !important;
 }
 
 .mobile-nav-link:hover {
-  color: rgba(255, 172, 89, 1);
+  color: rgba(255, 172, 89, 1) !important;
 }
 
 .mobile-nav-link:last-child {
@@ -371,33 +367,33 @@ body.menu-open::before {
 }
 
 .mobile-contact-btn {
-  background: rgba(255, 172, 89, 1);
-  border: none;
-  border-radius: 8px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: auto;
-  width: 100%;
+  background-color: rgba(255, 172, 89, 1) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  height: 48px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  margin-top: auto !important;
+  width: 100% !important;
 }
 
 .mobile-contact-btn:hover {
-  background: rgba(255, 152, 69, 1);
-  transform: translateY(-2px);
+  background-color: rgba(255, 152, 69, 1) !important;
+  transform: translateY(-2px) !important;
 }
 
 .mobile-contact-btn:active {
-  transform: scale(0.98);
+  transform: scale(0.98) !important;
 }
 
 .mobile-contact-btn span {
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
 }
 
 /* Responsive Design */

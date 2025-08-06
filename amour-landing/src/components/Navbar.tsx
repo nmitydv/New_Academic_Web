@@ -35,17 +35,17 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobileMenuOpen]);
 
-  // Add/remove body class for blur effect
+  // Control body overflow when menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.classList.add('menu-open');
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.classList.remove('menu-open');
+      document.body.style.overflow = 'auto';
     }
 
     // Cleanup on unmount
     return () => {
-      document.body.classList.remove('menu-open');
+      document.body.style.overflow = 'auto';
     };
   }, [isMobileMenuOpen]);
 
