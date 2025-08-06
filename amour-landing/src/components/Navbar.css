@@ -1,0 +1,471 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Navbar Container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+  height: 80px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  width: 100%;
+}
+
+.navbar-container {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 0 128px;
+  top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* Logo Section */
+.navbar-logo {
+  position: relative;
+  height: 50px;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.logo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffac59, #ff8c42);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logo-text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.academic-web {
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: normal;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  position: relative;
+  border-radius: 12px;
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 48px;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: flex-start;
+  height: 24px;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link span {
+  white-space: nowrap;
+  background: rgba(14, 19, 31, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.nav-link:hover span {
+  background: rgba(255, 172, 89, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Login Button */
+.navbar-actions {
+  position: relative;
+  height: 48px;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.login-btn {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 172, 89, 1);
+  border: none;
+  border-radius: 8px;
+  height: 48px;
+  width: 116px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  padding: 0px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: rgba(255, 152, 69, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 172, 89, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.login-btn span {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 20px;
+  width: 47px;
+  position: relative;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn span {
+  width: 100%;
+  height: 3px;
+  background: rgba(14, 19, 31, 1);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.mobile-nav.open {
+  transform: translateY(0);
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 15px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(14, 19, 31, 1);
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.mobile-nav-link:hover {
+  color: rgba(255, 172, 89, 1);
+}
+
+.mobile-nav-link:active {
+  background: rgba(255, 172, 89, 0.1);
+}
+
+.mobile-nav-link:last-child {
+  border-bottom: none;
+}
+
+.mobile-login-btn {
+  margin-top: 20px;
+  width: 100%;
+  background: rgba(255, 172, 89, 1);
+  border: none;
+  border-radius: 8px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-login-btn:hover {
+  background: rgba(255, 152, 69, 1);
+}
+
+.mobile-login-btn:active {
+  transform: scale(0.98);
+}
+
+.mobile-login-btn span {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .navbar-container {
+    padding: 0 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 20px;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .navbar-actions {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .mobile-nav {
+    display: block;
+  }
+  
+  .navbar-logo {
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+  
+  .academic-web {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+  
+  .logo-image {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .mobile-nav {
+    padding: 16px;
+  }
+  
+  .mobile-nav-link {
+    padding: 12px 0;
+    font-size: 15px;
+  }
+  
+  .mobile-login-btn {
+    height: 44px;
+  }
+  
+  .mobile-login-btn span {
+    font-size: 15px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .nav-link:hover span {
+    background: rgba(14, 19, 31, 1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .login-btn:hover {
+    background: rgba(255, 172, 89, 1);
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .mobile-nav-link:hover {
+    color: rgba(14, 19, 31, 1);
+  }
+  
+  .mobile-login-btn:hover {
+    background: rgba(255, 172, 89, 1);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .nav-link span {
+    color: rgba(14, 19, 31, 1);
+    background: none;
+    -webkit-background-clip: unset;
+    text-fill-color: unset;
+    -webkit-text-fill-color: unset;
+  }
+  
+  .nav-link:hover span {
+    color: rgba(255, 172, 89, 1);
+    background: none;
+    -webkit-background-clip: unset;
+    text-fill-color: unset;
+    -webkit-text-fill-color: unset;
+  }
+  
+  .academic-web {
+    color: rgba(0, 0, 0, 1);
+    background: none;
+    -webkit-background-clip: unset;
+    text-fill-color: unset;
+    -webkit-text-fill-color: unset;
+  }
+  
+  .login-btn span {
+    color: white;
+    background: none;
+    -webkit-background-clip: unset;
+    text-fill-color: unset;
+    -webkit-text-fill-color: unset;
+  }
+}
