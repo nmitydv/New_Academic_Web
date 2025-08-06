@@ -1,9 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import logo from '../assets/img/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(0);
+  const closeBtnRef = useRef(null);
+
+  // Hide header on scroll down, show on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 50) {
+        setShowHeader(true);
+        lastScrollY.current = window.scrollY;
+        return;
+      }
+      if (window.scrollY > lastScrollY.current) {
+        setShowHeader(false); // scrolling down
+      } else {
+        setShowHeader(true); // scrolling up
+      }
+      lastScrollY.current = window.scrollY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on scroll
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const handleScroll = () => setIsMobileMenuOpen(false);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobileMenuOpen]);
+
+  // Add/remove body class for blur effect
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isMobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -18,25 +62,23 @@ const Navbar = () => {
   ];
 
   const handleNavClick = (href: string) => {
-    // Close mobile menu when a link is clicked
     setIsMobileMenuOpen(false);
-    
-    // Smooth scroll to section
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleLoginClick = () => {
-    // Close mobile menu
+  const handleContactClick = () => {
     setIsMobileMenuOpen(false);
-    // Add your login functionality here
-    console.log('Login clicked');
+    const contactElement = document.querySelector('#contact');
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <nav className="navbar">
+    <header className={`navbar ${showHeader ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="navbar-container">
         {/* Logo Section */}
         <div className="navbar-logo">
@@ -50,9 +92,9 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="navbar-nav desktop-nav">
           {navItems.map((item) => (
-            <a 
-              key={item.name} 
-              href={item.href} 
+            <a
+              key={item.name}
+              href={item.href}
               className="nav-link"
               onClick={(e) => {
                 e.preventDefault();
@@ -64,53 +106,67 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Login Button */}
+        {/* Contact Button */}
         <div className="navbar-actions">
-          <button className="login-btn" onClick={handleLoginClick}>
-            <span>Login</span>
+          <button className="contact-btn" onClick={handleContactClick}>
+            <span>Contact</span>
           </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`}
+        <button
+          className="mobile-menu-btn"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
         </button>
       </div>
 
-      {/* Mobile Navigation */}
-      <div className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
-        {navItems.map((item) => (
-          <a 
-            key={item.name} 
-            href={item.href} 
-            className="mobile-nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick(item.href);
-            }}
-          >
-            {item.name}
-          </a>
-        ))}
-        <button className="mobile-login-btn" onClick={handleLoginClick}>
-          <span>Login</span>
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
+      {/* Mobile menu overlay */}
       {isMobileMenuOpen && (
-        <div 
-          className="mobile-overlay"
-          onClick={() => setIsMobileMenuOpen(false)}
-        ></div>
+        <div className="mobile-overlay">
+          <div className="mobile-menu-content">
+            <div className="mobile-menu-header">
+              <div className="mobile-logo">
+                <img src={logo} alt="Amour Logo" className="mobile-logo-image" />
+              </div>
+              <button 
+                ref={closeBtnRef} 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                aria-label="Close menu" 
+                className="mobile-close-btn"
+              >
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <nav className="mobile-nav-menu">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="mobile-nav-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href);
+                  }}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </nav>
+            {/* Contact button in mobile menu */}
+            <button className="mobile-contact-btn" onClick={handleContactClick}>
+              <span>Contact</span>
+            </button>
+          </div>
+        </div>
       )}
-    </nav>
+    </header>
   );
 };
 
